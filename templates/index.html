@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harga Emas Hari Ini</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Azret+Mono&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Helvetica', sans-serif;
+            background-color: #f4f7f6;
+            padding-top: 20px;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Helvetica', sans-serif;
+            font-weight: bold;
+            color: #333;
+        }
+
+        p {
+            font-family: 'Azret Mono', monospace;
+        }
+
+        .card-header {
+            background-color: #130851;
+            color: white;
+            font-weight: bold;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        /* Tabel Styling */
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .table th, .table td {
+            padding: 12px 15px;
+            text-align: center;
+            border: 1px solid #ddd;
+            vertical-align: middle;
+        }
+
+        .table th {
+            background-color: #222222;
+            color: white;
+        }
+
+        .table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .table tr:hover {
+            background-color: #f1f1f1;
+            cursor: pointer;
+        }
+
+        .table td a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .table td a:hover {
+            text-decoration: underline;
+        }
+
+        .price-change {
+            font-weight: bold;
+        }
+
+        .price-change.up {
+            color: green;
+        }
+
+        .price-change.down {
+            color: red;
+        }
+
+        /* Responsive Table */
+        @media (max-width: 768px) {
+            .table th, .table td {
+                font-size: 12px;
+                padding: 8px;
+            }
+        }
+
+        .title_table th {
+            background-color: #130851;
+            color: white;
+            font-weight: bold;
+        }
+
+        .container {
+            margin-top: 30px;
+        }
+
+        .footer {
+            align-content: center;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">Harga Emas Hari Ini</h1>
+
+        <!-- Card: Table 1 - Harga Emas Hari Ini -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <strong>Harga Emas Hari Ini</strong>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <!-- <tr class="title_table">
+                            <th colspan="10">Harga Emas Hari Ini - {{ table1_data['date'] }}</th>
+                        </tr> -->
+                        <tr class="title_table">
+                            <th colspan="10">Harga Emas Hari Ini - <span id="current-date"></span></th>
+                        </tr>
+
+                        <tr class="title_table">
+                            <th colspan="2">USD (Spot Dunia)</th>
+                            <th colspan="3">IDR (Kurs Tengah BI)</th>
+                            <th colspan="3">IDR (Spot Dunia)</th>
+                            <th colspan="2">Logam Mulia (Antam) - 1 gr</th>
+                        </tr>
+                        <tr class="title_table">
+                            <th>/oz <span class="text-danger">↓</span></th>
+                            <th>/gr</th>
+                            <th>IDR/USD</th>
+                            <th>/oz <span class="text-danger">↓</span></th>
+                            <th>/gr <span class="text-danger">↓</span></th>
+                            <th>IDR/USD <span class="text-success">↑</span></th>
+                            <th>/oz <span class="text-danger">↓</span></th>
+                            <th>/gr <span class="text-danger">↓</span></th>
+                            <th>Jual <span class="text-danger">↓</span></th>
+                            <th>Buy Back <span class="text-danger">↓</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ table1_data['usd_spot_per_ounce'] }} <span class="price-change down">{{ table1_data['usd_spot_change'] }}</span></td>
+                            <td>{{ table1_data['usd_spot_per_gram'] }} <span class="price-change down">{{ table1_data['usd_gram_change'] }}</span></td>
+                            <td>{{ table1_data['idr_to_usd'] }}</td>
+                            <td>{{ table1_data['idr_spot_per_ounce'] }} <span class="price-change down">{{ table1_data['idr_spot_change_ounce'] }}</span></td>
+                            <td>{{ table1_data['idr_spot_per_gram'] }} <span class="price-change down">{{ table1_data['idr_spot_change_gram'] }}</span></td>
+                            <td>{{ table1_data['idr_to_usd_spot'] }} <span class="price-change up">{{ table1_data['idr_to_usd_change'] }}</span></td>
+                            <td>{{ table1_data['jual_price'] }} <span class="price-change down">{{ table1_data['jual_change'] }}</span></td>
+                            <td>{{ table1_data['buy_back_price'] }} <span class="price-change down">{{ table1_data['buy_back_change'] }}</span></td>
+                        </tr>
+                        <tr class="text-center font-weight-bold">
+                            <td colspan="2">{{ table1_data['update_time_1'] }}</td>
+                            <td colspan="3">{{ table1_data['update_time_2'] }}</td>
+                            <td colspan="3">{{ table1_data['update_time_3'] }}</td>
+                            <td colspan="2">{{ table1_data['update_time_4'] }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Card: Table 2 - Spot Harga Emas dan Konversi Satuan -->
+        <div class="card mb-4">
+            <div class="card-header bg-blue text-white">
+                <strong>Spot Harga Emas Hari Ini (Market Open)</strong> | <strong>Konversi Satuan</strong>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr class="title_table">
+                            <th colspan="4">Spot Harga Emas Hari Ini <br>(Market Open)</th>
+                            <th colspan="3">Konversi Satuan</th>
+                        </tr>
+                        <tr class="title_table">
+                            <th>Satuan</th>
+                            <th>USD</th>
+                            <th>Kurs Dollar</th>
+                            <th>IDR</th>
+                            <th>Ounce (oz)</th>
+                            <th>Gram (gr)</th>
+                            <th>Kilogram (kg)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in table2_data %}
+                            <tr class="text-right">
+                                <td>{{ row[0] }}</td>
+                                <td>{{ row[1] }}</td>
+                                <td>{{ row[2] }}</td>
+                                <td>{{ row[3] }}</td>
+                                <td>{{ row[4] }}</td>
+                                <td>{{ row[5] }}</td>
+                                <td>{{ row[6] }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Card: Table 3 - Harga Emas (Gram dan Batangan) -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <strong>Harga Emas (Gram dan Batangan)</strong>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="title_table">
+                            <th colspan="5">
+                                <a href="https://harga-emas.org/logam-mulia/" target="_blank">Harga Emas Hari Ini</a>
+                            </th>
+                        </tr>
+                        <tr class="title_table">
+                            <th rowspan="2">Gram</th>
+                            <th colspan="2">Gedung Antam Jakarta</th>
+                            <th colspan="2">Pegadaian</th>
+                        </tr>
+                        <tr class="title_table">
+                            <th>per Gram (Rp)</th>
+                            <th>per Batangan (Rp)</th>
+                            <th>per Gram (Rp)</th>
+                            <th>per Batangan (Rp)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in table3_data %}
+                            <tr>
+                                <td>{{ row[0] }}</td>
+                                <td>{{ row[1] }}</td>
+                                <td>{{ row[2] }}</td>
+                                <td>{{ row[3] }}</td>
+                                <td>{{ row[4] }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- table 4 -->
+        
+        <div class="card mb-4">
+                <div class="card-header">
+                    <strong>Harga Emas - Jual dan Beli</strong>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr class="title_table">
+                                <th>Jual (Sell)</th>
+                                <th>Beli (Buy)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ table4_data['sell_price'] }}</td>
+                                <td>{{ table4_data['buy_price'] }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+        </div>
+ 
+    </div>
+
+    <div class="footer">
+        <footer>
+            <p>
+                Data bersumber dari harga-emas.org
+            </p>
+        </footer>
+    </div>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Mendapatkan tanggal dan format
+        var today = new Date();
+        var options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+        var formattedDate = today.toLocaleDateString('id-ID', options); // Format: Jumat, 15 November 2024
+
+        // Menampilkan tanggal di elemen dengan id "current-date"
+        document.getElementById('current-date').textContent = formattedDate;
+    </script>
+</body>
+</html>
