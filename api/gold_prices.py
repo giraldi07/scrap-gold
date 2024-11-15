@@ -23,6 +23,11 @@ def get_gold_prices():
         'waktu': waktu
     }
 
+@app.route('/')
+def home():
+    return "Welcome to Scrap Gold API!"
+
+
 # Endpoint API untuk mendapatkan data harga emas
 @app.route('/api/gold_prices', methods=['GET'])
 def api_gold_prices():
